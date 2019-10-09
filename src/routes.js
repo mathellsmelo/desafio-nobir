@@ -12,6 +12,7 @@ const CoinController = require('./controllers/CollectedCoinController');
 
 routes.post('/monsters', MonsterController.store);
 routes.post('/users', UserController.store);
+routes.get('/users', UserController.search);
 routes.post('/coins', CoinController.store);
 
 module.exports = routes;

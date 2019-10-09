@@ -9,7 +9,11 @@ module.exports = {
     async store(req, res) {
         const { value, nickname } = req.body;
         
+        console.log(value + nickname);
+
         const user_id = UserService.getUserIdByNickName(nickname);
+
+        console.log(user_id);
 
         const collected_coin = await Collected_Coin.create({ value, user_id });
 

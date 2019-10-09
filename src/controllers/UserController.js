@@ -1,8 +1,17 @@
 const User = require('../models/User');
+const UserService = require('../services/UserService');
 
 module.exports = {
-    async index (req, res) {
+    async search (req, res) {
+        const { nickname } = req.query;
 
+        const user_id = UserService.getUserIdByNickName(nickname);
+
+        await User.findById(user_id).then (result => {
+            return res.send(result);
+        }).catch(err => {
+            return res.json({ error: err });
+        });
     },
 
     async update (req, res) {
@@ -21,8 +30,11 @@ module.exports = {
         const { nickname } = req.body;
         console.log(nickname);
         
-        const user = await User.create({ nickname });
+        await User.create({ nickname }).then (result => {
+            return res.send(result);
+        }).catch(err => {
+            return res.send({ error: err });
+        });
 
-        return res.json(user);
     }
 }

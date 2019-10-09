@@ -3,7 +3,8 @@ const { Schema, model } = require('mongoose');
 const UserSchema = new Schema({
     nickname: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     coin_trophies: {
         type: Number
