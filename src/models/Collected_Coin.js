@@ -2,12 +2,13 @@ const { Schema, model } = require('mongoose');
 
 const CoinSchema = new Schema({
     user_id: {
-        type: Schema.type.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'User',
         require: true
     },
     value: {
-        type: Number
+        type: Number,
+        default: 0
     }
 });
 
