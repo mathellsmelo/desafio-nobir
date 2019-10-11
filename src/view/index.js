@@ -2,7 +2,8 @@ class Index extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            nickname: ''
+            nickname: '',
+            isUserLogged: false
         }
         this.collectCoin = this.collectCoin.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -10,10 +11,7 @@ class Index extends React.Component {
         this.handleRegister = this.handleRegister.bind(this);
     }
 
-    collectCoin = async (str) => {
-        console.log(str)
-        const nickname = 'Teste Via React';
-        const value = 1;
+    collectCoin = async (value, nickname) => {
         await axios.post('/coins', {
             nickname,
             value
@@ -53,10 +51,17 @@ class Index extends React.Component {
         await axios.post('/users', {
             nickname
         }).then(res => {
-            alert(res.data);
+            alert('Usuário cadastrado: ' + res.data.nickname);
+            this.logUser();
         }).catch(error => {
-            alert(error.errmsg);
+            alert(error.response.data.msg);
         });
+    }
+
+    logUser = () => {
+        this.setState({
+            isUserLogged: true
+        })
     }
 
     render() {
@@ -76,10 +81,10 @@ class Index extends React.Component {
                     </label>
                     <input type="submit" value="Cadastrar" />
                 </form>
-                <h1>Teste</h1>
-                <button onClick={() => this.collectCoin('pipipopop')}> COLETAR MOEDA </button>
-                <h1>Teste</h1>
-                <button onClick={() => this.collectCoin('pipipopop')}> COLETAR MOEDA </button>
+                <h1>Coletar Moeda</h1>
+                <button onClick={() => this.collectCoin('pipipopop')}> DO IT! </button>
+                <h1>Matar Monstro</h1>
+                <button onClick={() => this.collectCoin('pipipopop')}> DO IT! </button>
             </div>
         );
     }

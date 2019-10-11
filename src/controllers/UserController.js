@@ -10,7 +10,7 @@ module.exports = {
         await User.findById(user_id).then (result => {
             return res.send(result);
         }).catch(err => {
-            return res.json({ error: err });
+            return res.send({ error: err });
         });
     },
 
@@ -22,18 +22,15 @@ module.exports = {
         return res.json(user);
     },
 
-    async destroy (req, res) {
-
-    },
-
-    async store(req, res) {
+    async store (req, res) {
         const { nickname } = req.body;
         console.log(nickname);
         
         await User.create({ nickname }).then (result => {
-            return res.send(result);
+            res.status(200).send(result);
         }).catch(err => {
-            return res.send({ error: err });
+            console.log('Erro ao tentar inserir: ' + err);
+            res.status(500).send({ msg: 'Registro duplicado' });
         });
 
     }
