@@ -1,15 +1,12 @@
-const mongoose = require('mongoose');
 const config = require('./index');
 
-const db = mongoose.connect(
-    config.mongo_uri, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      }
-).then(() => 
-    console.log('Connect to database')
-).catch((err) =>
-    console.log('An Error Has Ocurred', err)
-);
-
-module.exports = db;
+module.exports = {
+    dialect: 'mysql',
+    host: config.host,
+    username: config.user,
+    password: config.password,
+    database: config.schema,
+    define: {
+      timestamps: false
+    },
+  };

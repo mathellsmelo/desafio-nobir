@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 
-class Collected_Coin extends Model {
+class Death extends Model {
     static init(sequelize) {
         super.init({ 
             value: DataTypes.INTEGER
@@ -12,10 +12,9 @@ class Collected_Coin extends Model {
     static associate(models) {
         this.belongsTo(models.User, {
             foreignKey: 'user_id',
-            as: 'owner'
+            as: 'dead'
         });
     }
-
 }
 
-module.exports = Collected_Coin;
+module.exports = Death;

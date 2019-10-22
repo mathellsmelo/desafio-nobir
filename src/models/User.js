@@ -1,26 +1,19 @@
-const { Schema, model } = require('mongoose');
+const { Model, DataTypes } = require('sequelize');
 
-const UserSchema = new Schema({
-    nickname: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    coin_trophies: {
-        type: Number
-    },
-    death_trophies: {
-        type: Number
-    },
-    monster_trophies: {
-        monster_id: {
-            type: Schema.Types.ObjectId,
-            ref: 'Monster'
-        },
-        num: {
-            type: Number
-        }
+class User extends Model {
+    static init(sequelize) {
+        super.init({
+            nickname:  DataTypes.STRING
+        }, {
+            sequelize
+        })
     }
-});
 
-module.exports = model('User', UserSchema);
+    static associate(models) {
+        this.hasMany(models.Killed_Monster, { foreignKey: 'user_id', as: 'killers' });
+        this.hasMany(models.Death, { foreignKey: 'user_id', as: 'deaths' });
+        this.hasMany(models.Collected_Coin, { foreignKey: 'user_id', as: 'coins' });
+    }
+}
+
+module.exports = User;

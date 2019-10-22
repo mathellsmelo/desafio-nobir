@@ -1,10 +1,17 @@
-const { Schema, model } = require('mongoose');
+const { Model, DataTypes } = require('sequelize');
 
-const MonsterSchema = new Schema({
-    name: {
-        type: String,
-        required: true
+class Monster extends Model {
+    static init(sequelize) {
+        super.init({
+            name:  DataTypes.STRING
+        }, {
+            sequelize
+        })
     }
-});
 
-module.exports = model('Monster', MonsterSchema);
+    static associate(models) {
+        this.hasMany(models.Killed_Monster, { foreignKey: 'monster_id', as: 'dead_monsters' });
+    }
+}
+
+module.exports = Monster;

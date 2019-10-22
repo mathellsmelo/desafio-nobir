@@ -1,4 +1,8 @@
 module.exports = {
     port: process.env.PORT || 3000,
-    mongo_uri: process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/ribon'
+    schema: process.env.SCHEMA || "nobir",
+    host: process.env.HOST || 'localhost',
+    user: process.env.USER || "root",
+    password: process.env.PASSWORD || "password",
+    secret: process.env.SECRET  || 'CodingIsCool'
 }

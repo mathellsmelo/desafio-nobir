@@ -1,4 +1,4 @@
-const Collected_Coin = require('../models/Collected_Coin');
+const Death = require('../models/Death');
 const User = require('../models/User');
 
 module.exports = {
@@ -12,8 +12,8 @@ module.exports = {
             });
         }
 
-        const collected_coin = await Collected_Coin.create( { user_id, value });
+        const death = await Death.create( { user_id, value });
 
-        return res.json(collected_coin);
+        return res.json(death);
     }
 };

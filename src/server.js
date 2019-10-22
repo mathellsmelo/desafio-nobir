@@ -3,7 +3,8 @@ const path = require('path');
 const cors = require('cors');
 
 const config = require('./config');
-const db = require('./config/db');
+
+require('./database');
 
 const app = express();
 const server = require('http').createServer(app);
