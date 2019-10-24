@@ -7,5 +7,15 @@ module.exports = {
         const user = await User.create( { nickname });
 
         return res.json(user);
+    },
+
+    async search (req, res) {
+        const { nickname } = req.params;
+
+        const user = await User.findOrCreate({ where: { nickname } });
+
+        return res.json(user);
     }
+
+    
 };

@@ -1,0 +1,180 @@
+.App {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding-bottom: 1em;
+}
+
+h1 {
+  color: #d2ffd8;
+}
+
+h1:hover {
+  color: #acffb7;
+}
+
+
+.fade-in {
+    opacity: 1;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 0.75s;
+}
+
+@keyframes fadeInOpacity {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+
+button.button1 {
+  width: 15em;
+  height: 2em;
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  border: 0.1em solid #acffb7;
+  background-color: transparent;
+  margin: 0 0.1em 0.1em 0;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #acffb7;
+  text-align: center;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: crosshair;
+}
+
+button.button1:hover {
+  color: #000000;
+  background-color: #acffb7;
+}
+@media all and (max-width:350em){
+  button.button1{
+    display: block;
+    margin: 0.4em auto;
+  }
+}
+
+select:hover {
+  color: #000000;
+  background-color: #acffb7;
+}
+
+.select-mode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+select {
+  width: 10em;
+  height: 2em;
+  padding: 0.35em 1.2em;
+  border: 0.1em solid #acffb7;
+  background-color: transparent;
+  margin: 0 0.1em 0.1em 0;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #acffb7;
+  transition: all 0.2s;
+  text-align: center;
+  text-align-last: center;
+}
+
+option {
+  text-align: center;
+}
+
+.group {
+  width: 100%;
+  height: 110px;
+  overflow: hidden;
+  position: relative;
+}
+
+label {
+  position: absolute;
+  top: 36.66667px;
+  color: rgba(255, 255, 255, 0.5);
+  font: 400 36.66667px Roboto;
+  cursor: text;
+  transition: .25s ease;
+}
+
+label.littleLabel {
+  top: 15px;
+  color: rgba(255, 255, 255, 0.5);
+  font: 400 15px Roboto;
+  cursor: text;
+  transition: .25s ease; 
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding-top: 36.66667px;
+  border: none;
+  border-radius: 0;
+  color: white;
+  background: #282c34;
+  font-size: 36.66667px;
+  transition: .3s ease;
+  
+}
+input:valid ~ label {
+  top: 0;
+  font: 700 22px Roboto;
+  color: rgba(255, 255, 255, 0.5);
+}
+input:focus {
+  outline: none;
+}
+input:focus ~ label {
+  top: 0;
+  font: 700 22px Roboto;
+  color: #acffb7;
+}
+input:focus ~ .bar:before {
+  transform: translateX(0);
+}
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #293428 inset;
+  -webkit-text-fill-color: white !important;
+}
+
+.bar {
+  background: rgba(255, 255, 255, 0.5);
+  content: '';
+  width: 550px;
+  height: 3.66667px;
+  transition: .3s ease;
+  position: relative;
+}
+.bar:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 150%;
+  background: #acffb7;
+  transform: translateX(-100%);
+}
+
+::selection {
+  background: rgba(51, 243, 33, 0.3);
+}
